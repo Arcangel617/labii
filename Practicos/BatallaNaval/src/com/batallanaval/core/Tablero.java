@@ -7,16 +7,31 @@ public class Tablero {
     private Celda celdas[] = new Celda[50];
     private int vidas;
 
+    /**
+     * Constructor de la clase Tablero.
+     * Al instanciarse se instancian los barcos de manerá automática.
+     * @param barcos
+     */
     public Tablero(int barcos){
         this.instanciarBarcos(barcos);
         this.completarTablero();
         this.vidas = barcos;
     }
 
+    /**
+     * Retorna la vida restante de un jugador. Este valor está dado por
+     * el numero de barcos que se indiquen.
+     * @return int
+     */
     public int getVidas(){
         return this.vidas;
     }
 
+    /**
+     * Se encarga de actualizar el estado del objeto al efectuarse un
+     * ataque exitoso. Caso contrario informará del fallo.
+     * @param posicion
+     */
     public void atacar(int posicion){
         if (this.celdas[posicion].activo()){
             if (this.celdas[posicion].getTieneBarco()){
@@ -31,6 +46,12 @@ public class Tablero {
         }
     }
 
+    /**
+     * Se ejecuta al instanciarse un Tablero. Recibe como parámetro el
+     * número de barcos los cuales serán instanciados en el tablero de manera
+     * aleatoria.
+     * @param barcos
+     */
     private void instanciarBarcos(int barcos){
         while(barcos > 0) {
             for (int i = 0; i < this.celdas.length; i++) {
@@ -50,6 +71,10 @@ public class Tablero {
         }
     }
 
+    /**
+     * Se ejecuta luego de instanciar los barcos. Completará las celdas restantes
+     * con valores por defecto.
+     */
     private void completarTablero(){
         for (int i = 0; i < this.celdas.length; i++) {
             if (this.celdas[i] == null){
@@ -58,6 +83,11 @@ public class Tablero {
         }
     }
 
+    /**
+     * Muestra el tablero de un jugador. A diferencia del método
+     * mostrarBarcos() éste método muestra el estado actual del tablero
+     * durante un determinado turno.
+     */
     public void mostrarTablero(){
         System.out.println("==============================");
         for (int i = 1; i <= this.celdas.length; i++) {
@@ -71,8 +101,7 @@ public class Tablero {
     }
 
     /**
-     * Muestra la posición de los barcos en el tablero
-     * Nota: lo utilizo solo para debug.
+     * Muestra la posición de todos los barcos en el tablero.
      */
     public void mostrarBarcos(){
         System.out.println("==============================");
