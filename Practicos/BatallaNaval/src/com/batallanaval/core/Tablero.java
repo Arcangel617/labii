@@ -18,11 +18,14 @@ public class Tablero {
     }
 
     public void atacar(int posicion){
-//        if (this.celdas[posicion].getTieneBarco() && this.celdas[posicion].activo()){
-        if (this.celdas[posicion].getTieneBarco()){
-            this.celdas[posicion].cambiarValor();
-            this.vidas--;
-            System.out.println("Hit!");
+        if (this.celdas[posicion].activo()){
+            if (this.celdas[posicion].getTieneBarco()){
+                this.celdas[posicion].cambiarValor();
+                this.vidas--;
+                System.out.print("Hit!  ");
+            } else {
+                System.out.print("Miss! ");
+            }
         } else {
             System.out.println("Ya habias seleccionado esa posición. Pierdes un turno!");
         }
