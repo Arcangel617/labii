@@ -27,17 +27,24 @@ public class Tablero {
                 System.out.print("Miss! ");
             }
         } else {
-            System.out.println("Ya habias seleccionado esa posición. Pierdes un turno!");
+            System.out.println("Ups! Parece que ya habias atacado esa posición.");
         }
     }
 
     private void instanciarBarcos(int barcos){
-        while(barcos > 0){
+        while(barcos > 0) {
             for (int i = 0; i < this.celdas.length; i++) {
-                if (Math.round(Math.random()) == 1 && celdas[i] == null){
+                if (Math.round(Math.random()) == 1 && celdas[i] == null) {
                     celdas[i] = new Celda();
                     celdas[i].setEnUso();
                     barcos--;
+                    /*
+                    * Si durante la primer recorrida se logran instanciar todos
+                    * los barcos, se forzará la salida del bucle.
+                    * */
+                    if (barcos == 0) {
+                        break;
+                    }
                 }
             }
         }
@@ -52,6 +59,7 @@ public class Tablero {
     }
 
     public void mostrarTablero(){
+        System.out.println("==============================");
         for (int i = 1; i <= this.celdas.length; i++) {
             if (i % 10 == 0){
                 System.out.println(this.celdas[i-1]);
@@ -59,6 +67,7 @@ public class Tablero {
                 System.out.print(this.celdas[i-1]);
             }
         }
+        System.out.println("==============================");
     }
 
     /**
@@ -66,20 +75,22 @@ public class Tablero {
      * Nota: lo utilizo solo para debug.
      */
     public void mostrarBarcos(){
+        System.out.println("==============================");
         for (int i = 1; i <= this.celdas.length; i++) {
             if (i % 10 == 0){
-                if (celdas[i-1].getTieneBarco()){
+                if (celdas[i-1].getTieneBarco() && celdas[i-1] != null){
                     System.out.println(" X ");
                 } else {
                     System.out.println(this.celdas[i-1]);
                 }
             } else {
-                if (celdas[i-1].getTieneBarco()){
+                if (celdas[i-1].getTieneBarco() && celdas[i-1] != null){
                     System.out.print(" X ");
                 } else {
                     System.out.print(this.celdas[i-1]);
                 }
             }
         }
+        System.out.println("==============================");
     }
 }

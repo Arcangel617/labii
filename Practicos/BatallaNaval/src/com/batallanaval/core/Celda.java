@@ -9,7 +9,7 @@ public class Celda {
     private boolean tieneBarco = false;
 
     public void cambiarValor(){
-        this.valor = " * ";
+        this.valor = " X ";
         this.activo = false;
     }
 
