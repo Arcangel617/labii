@@ -6,19 +6,23 @@ package com.batallanaval.core;
 public class Celda {
     private String valor = " ~ ";
     private boolean activo = true;
-    private boolean enuso = false;
+    private boolean tieneBarco = false;
 
     public void cambiarValor(){
         this.valor = " * ";
         this.activo = false;
     }
 
-    public boolean getEnUso(){
-        return this.enuso;
+    public boolean activo(){
+        return this.activo;
+    }
+
+    public boolean getTieneBarco(){
+        return this.tieneBarco;
     }
 
     public void setEnUso(){
-        this.enuso = true;
+        this.tieneBarco = true;
     }
     @Override
     public String toString(){

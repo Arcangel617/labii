@@ -18,9 +18,13 @@ public class Tablero {
     }
 
     public void atacar(int posicion){
-        if (this.celdas[posicion].getEnUso()){
+//        if (this.celdas[posicion].getTieneBarco() && this.celdas[posicion].activo()){
+        if (this.celdas[posicion].getTieneBarco()){
             this.celdas[posicion].cambiarValor();
             this.vidas--;
+            System.out.println("Hit!");
+        } else {
+            System.out.println("Ya habias seleccionado esa posición. Pierdes un turno!");
         }
     }
 
@@ -58,16 +62,16 @@ public class Tablero {
      * Muestra la posición de los barcos en el tablero
      * Nota: lo utilizo solo para debug.
      */
-    private void mostrarBarcos(){
+    public void mostrarBarcos(){
         for (int i = 1; i <= this.celdas.length; i++) {
             if (i % 10 == 0){
-                if (celdas[i-1].getEnUso()){
+                if (celdas[i-1].getTieneBarco()){
                     System.out.println(" X ");
                 } else {
                     System.out.println(this.celdas[i-1]);
                 }
             } else {
-                if (celdas[i-1].getEnUso()){
+                if (celdas[i-1].getTieneBarco()){
                     System.out.print(" X ");
                 } else {
                     System.out.print(this.celdas[i-1]);
