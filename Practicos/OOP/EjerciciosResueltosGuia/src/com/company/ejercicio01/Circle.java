@@ -1,4 +1,4 @@
-package com.company.ejericicio01;
+package com.company.ejercicio01;
 
 /**
  * Created by arcangel on 16/11/16.
