@@ -8,7 +8,7 @@ public class Main {
         Circle circulo1 = new Circle();
         Circle circulo2 = new Circle(10);
         Circle circulo3 = new Circle(25);
-        Circle circulo4 = new Circle(3);
+        Circle circulo4 = new Circle(-3);
         Circle circulo5 = new Circle(5);
 
         actions(circulo1);
